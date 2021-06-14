@@ -97,6 +97,7 @@ btn_task_create.setAttribute('type', 'button');
 btn_task_create.setAttribute('id', 'btn_task_create');
 btn_task_create.setAttribute('name', 'btn_task_create');
 btn_task_create.setAttribute('value', 'Create Task');
+btn_task_create.style.cursor = 'pointer';
 
 input_number.setAttribute('type', 'number');
 input_number.setAttribute('id', 'input_number');
@@ -108,16 +109,19 @@ btn_task_mark_ongoing.setAttribute('type', 'button');
 btn_task_mark_ongoing.setAttribute('id', 'btn_task_mark_ongoing');
 btn_task_mark_ongoing.setAttribute('name', 'btn_task_mark_ongoing');
 btn_task_mark_ongoing.setAttribute('value', 'Mark Task As Ongoing');
+btn_task_mark_ongoing.style.cursor = 'pointer';
 
 btn_task_complete.setAttribute('type', 'button');
 btn_task_complete.setAttribute('id', 'btn_task_complete');
 btn_task_complete.setAttribute('name', 'btn_task_complete');
 btn_task_complete.setAttribute('value', 'Complete Task');
+btn_task_complete.style.cursor = 'pointer';
 
 btn_task_delete.setAttribute('type', 'button');
 btn_task_delete.setAttribute('id', 'btn_task_delete');
 btn_task_delete.setAttribute('name', 'btn_task_delete');
 btn_task_delete.setAttribute('value', 'Delete Task');
+btn_task_delete.style.cursor = 'pointer';
 
 input_number_task_modify.setAttribute('type', 'number');
 input_number_task_modify.setAttribute('id', 'input_number_task_modify');
@@ -134,6 +138,7 @@ btn_task_modify.setAttribute('type', 'button');
 btn_task_modify.setAttribute('id', 'btn_task_modify');
 btn_task_modify.setAttribute('name', 'btn_task_modify');
 btn_task_modify.setAttribute('value', 'Modify Task');
+btn_task_modify.style.cursor = 'pointer';
 
 title_style.innerText = 'Title style';
 title_style.style.textTransform = 'uppercase';
@@ -143,22 +148,26 @@ btn_style_color_default.setAttribute('type', 'button');
 btn_style_color_default.setAttribute('id', 'btn_style_color_default');
 btn_style_color_default.setAttribute('name', 'btn_style_color_default');
 btn_style_color_default.setAttribute('value', 'Default Colors');
+btn_style_color_default.style.cursor = 'pointer';
 
 btn_style_color_text.setAttribute('type', 'color');
 btn_style_color_text.setAttribute('id', 'btn_style_color_text');
 btn_style_color_text.setAttribute('name', 'btn_style_color_text');
+btn_style_color_text.style.cursor = 'pointer';
 
 span_style_color_text.innerText = 'Text Color';
 
 btn_style_color_background.setAttribute('type', 'color');
 btn_style_color_background.setAttribute('id', 'btn_style_color_background');
 btn_style_color_background.setAttribute('name', 'btn_style_color_background');
+btn_style_color_background.style.cursor = 'pointer';
 
 span_style_color_background.innerText = 'Background Color';
 
 btn_style_color_ongoing.setAttribute('type', 'color');
 btn_style_color_ongoing.setAttribute('id', 'btn_style_color_ongoing');
 btn_style_color_ongoing.setAttribute('name', 'btn_style_color_ongoing');
+btn_style_color_ongoing.style.cursor = 'pointer';
 
 span_style_color_ongoing.innerText = 'Color For Ongoing Tasks';
 
@@ -168,7 +177,7 @@ btn_task_create.addEventListener('click', function()
 	if (input_field.value != '')
 	{
 		nbr_task++;
-		list_tasks.insertAdjacentHTML('beforeend', '<li id="task_' + nbr_task + '" spellcheck="false"></li>');
+		list_tasks.insertAdjacentHTML('beforeend', '<li id="task_' + nbr_task + '" spellcheck="false" style="cursor: pointer;"></li>');
 		task = document.getElementById('task_' + nbr_task);
 		task.innerText = input_field.value;
 		task.contentEditable = true;

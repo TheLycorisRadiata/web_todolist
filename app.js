@@ -77,9 +77,7 @@ title_tasks.style.textTransform = 'uppercase';
 title_tasks.style.fontSize = '150%';
 
 for (let element of all_elements_input)
-{
-	element.style.marginRight = '5px';
-}
+    element.style.marginRight = '5px';
 
 div_task_interaction.style.marginTop = '15px';
 div_task_interaction.style.visibility = 'hidden';
@@ -173,134 +171,130 @@ span_style_color_ongoing.innerText = 'Color For Ongoing Tasks';
 
 btn_task_create.addEventListener('click', function()
 {
-	let task;
-	if (input_field.value != '')
-	{
-		nbr_task++;
-		list_tasks.insertAdjacentHTML('beforeend', '<li id="task_' + nbr_task + '" spellcheck="false" style="cursor: pointer;"></li>');
-		task = document.getElementById('task_' + nbr_task);
-		task.innerText = input_field.value;
-		task.contentEditable = true;
-		tasks.push(task);
-		input_field.value = '';
-		input_number.value = '';
-		input_number_task_modify.value = '';
-		input_field_task_modify.value = '';
-		div_task_interaction.style.visibility = 'visible'; 
-	}
+    let task;
+    if (input_field.value != '')
+    {
+        nbr_task++;
+        list_tasks.insertAdjacentHTML('beforeend', '<li id="task_' + nbr_task + '" spellcheck="false" style="cursor: pointer;"></li>');
+        task = document.getElementById('task_' + nbr_task);
+        task.innerText = input_field.value;
+        task.contentEditable = true;
+        tasks.push(task);
+        input_field.value = '';
+        input_number.value = '';
+        input_number_task_modify.value = '';
+        input_field_task_modify.value = '';
+        div_task_interaction.style.visibility = 'visible'; 
+    }
 });
 
 btn_task_mark_ongoing.addEventListener('click', function()
 {
-	const task = tasks[input_number.value - 1];
-	if (task != null)
-	{
-		task.style.textDecoration = 'none';
-		if (task.classList.contains('ongoing'))
-		{
-			task.classList.remove('ongoing');
-			task.style.color = color_text;
-		}
-		else
-		{
-			task.classList.add('ongoing');
-			task.style.color = color_ongoing;
-		}
-		input_field.value = '';
-		input_number.value = '';
-		input_number_task_modify.value = '';
-		input_field_task_modify.value = '';
-	}
+    const task = tasks[input_number.value - 1];
+    if (task)
+    {
+        task.style.textDecoration = 'none';
+        if (task.classList.contains('ongoing'))
+        {
+            task.classList.remove('ongoing');
+            task.style.color = color_text;
+        }
+        else
+        {
+            task.classList.add('ongoing');
+            task.style.color = color_ongoing;
+        }
+        input_field.value = '';
+        input_number.value = '';
+        input_number_task_modify.value = '';
+        input_field_task_modify.value = '';
+    }
 });
 
 btn_task_complete.addEventListener('click', function()
 {
-	const task = tasks[input_number.value - 1];
-	if (task != null)
-	{
-		task.style.color = 'initial';
-		task.style.textDecoration = 'line-through';
-		input_field.value = '';
-		input_number.value = '';
-		input_number_task_modify.value = '';
-		input_field_task_modify.value = '';
-	}
+    const task = tasks[input_number.value - 1];
+    if (task)
+    {
+        task.style.color = 'initial';
+        task.style.textDecoration = 'line-through';
+        input_field.value = '';
+        input_number.value = '';
+        input_number_task_modify.value = '';
+        input_field_task_modify.value = '';
+    }
 });
 
 btn_task_delete.addEventListener('click', function()
 {
-	const task = tasks[input_number.value - 1];
-	if (task != null)
-	{
-		tasks.splice(input_number.value - 1, 1);
-		task.remove();
-		input_field.value = '';
-		input_number.value = '';
-		input_number_task_modify.value = '';
-		input_field_task_modify.value = '';
-		if (tasks.length == 0)
-			div_task_interaction.style.visibility = 'hidden';
-	}
+    const task = tasks[input_number.value - 1];
+    if (task)
+    {
+        tasks.splice(input_number.value - 1, 1);
+        task.remove();
+        input_field.value = '';
+        input_number.value = '';
+        input_number_task_modify.value = '';
+        input_field_task_modify.value = '';
+        if (!tasks.length)
+            div_task_interaction.style.visibility = 'hidden';
+    }
 });
 
 btn_task_modify.addEventListener('click', function()
 {
-	const task = tasks[input_number_task_modify.value - 1];
-	const new_text = input_field_task_modify.value;
+    const task = tasks[input_number_task_modify.value - 1];
+    const new_text = input_field_task_modify.value;
 
-	if (task != null && new_text != '')
-	{
-		task.innerText = new_text;
-		input_field.value = '';
-		input_number.value = '';
-		input_number_task_modify.value = '';
-		input_field_task_modify.value = '';
-	}
+    if (task && new_text != '')
+    {
+        task.innerText = new_text;
+        input_field.value = '';
+        input_number.value = '';
+        input_number_task_modify.value = '';
+        input_field_task_modify.value = '';
+    }
 });
 
 btn_style_color_default.addEventListener('click', function()
 {
-	const tasks_ongoing = document.getElementsByClassName('ongoing');
+    const tasks_ongoing = document.getElementsByClassName('ongoing');
 
-	color_text = color_text_default;
-	color_background = color_background_default;
-	color_ongoing = color_ongoing_default;
+    color_text = color_text_default;
+    color_background = color_background_default;
+    color_ongoing = color_ongoing_default;
 
-	document.body.style.color = color_text;
-	document.body.style.backgroundColor = color_background;
+    document.body.style.color = color_text;
+    document.body.style.backgroundColor = color_background;
 
-	if (tasks_ongoing.length > 0)
-	{
-		for (let task of tasks_ongoing)
-		{
-			task.style.color = color_ongoing;
-		}
-	}
+    if (tasks_ongoing.length)
+    {
+        for (let task of tasks_ongoing)
+            task.style.color = color_ongoing;
+    }
 });
 
 btn_style_color_text.addEventListener('click', function(e)
 {
-	color_text = e.target.value;
-	document.body.style.color = color_text;
+    color_text = e.target.value;
+    document.body.style.color = color_text;
 });
 
 btn_style_color_background.addEventListener('click', function(e)
 {
-	color_background = e.target.value;
-	document.body.style.backgroundColor = color_background;
+    color_background = e.target.value;
+    document.body.style.backgroundColor = color_background;
 });
 
 btn_style_color_ongoing.addEventListener('click', function(e)
 {
-	const tasks_ongoing = document.getElementsByClassName('ongoing');
-	color_ongoing = e.target.value;
+    const tasks_ongoing = document.getElementsByClassName('ongoing');
+    color_ongoing = e.target.value;
 
-	if (tasks_ongoing.length > 0)
-	{
-		for (let task of tasks_ongoing)
-		{
-			task.style.color = color_ongoing;
-		}
-	}
+    if (tasks_ongoing.length)
+    {
+        for (let task of tasks_ongoing)
+            task.style.color = color_ongoing;
+    }
 });
 
